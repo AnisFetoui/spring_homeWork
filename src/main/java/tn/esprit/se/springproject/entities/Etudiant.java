@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 
@@ -19,4 +20,7 @@ public class Etudiant implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date dateNaissance;
 // Constructeur et accesseurs (getters) et mutateurs (setters)
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Reservation> reservation;
 }

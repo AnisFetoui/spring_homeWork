@@ -1,11 +1,9 @@
 package tn.esprit.se.springproject.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 public class Foyer implements Serializable {
@@ -15,4 +13,10 @@ public class Foyer implements Serializable {
     private Long idFoyer;
     private String nomFoyer;
     private Long capaciteFoyer;
+
+
+    @OneToOne(mappedBy="foyer")
+    private Universite universite;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
+    private Set<Bloc> blocs;
 }
