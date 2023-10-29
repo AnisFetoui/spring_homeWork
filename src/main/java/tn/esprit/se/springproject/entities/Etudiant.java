@@ -1,13 +1,22 @@
 package tn.esprit.se.springproject.entities;
 
 import jakarta.persistence.*;
+import lombok.*;
+import lombok.experimental.FieldDefaults;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+//@ToString
+//@EqualsAndHashCode
+@FieldDefaults(level = AccessLevel.PRIVATE)
+@Builder
 public class Etudiant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +31,5 @@ public class Etudiant implements Serializable {
 // Constructeur et accesseurs (getters) et mutateurs (setters)
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private Set<Reservation> reservation;
+   private Set<Reservation> reservation;
 }
