@@ -4,8 +4,9 @@ import lombok.AllArgsConstructor;
 
 
 import org.springframework.web.bind.annotation.*;
-import tn.esprit.se.springproject.entities.Etudiant;
+import tn.esprit.se.springproject.entities.Foyer;
 import tn.esprit.se.springproject.entities.Universite;
+import tn.esprit.se.springproject.repositories.UniversiteRepository;
 import tn.esprit.se.springproject.services.IUniversiteService;
 
 import java.util.List;
@@ -13,17 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/universite")
-/*
-//Universite
-List<University> retrieveAllUniversities();
-University addUniversity (University u);
-University updateUniversity (University u);
-University retrieveUniversity (long idUniversity);
-void removeUniversity  (long idUniversity );
 
- */
 public class universiteController {
     IUniversiteService iUniversiteService;
+    UniversiteRepository universiteRepository;
 
 
     @GetMapping("/retrieve-all-universities")
@@ -50,5 +44,19 @@ public class universiteController {
         Universite Universities = iUniversiteService.retrieveuniversity(id_universite);
         return Universities;
     }
+
+    @PutMapping("/add-universitieandFoyer/{idFoyer}/{nomU}")
+    @ResponseBody
+    public Universite affecterFoyaUniver(@PathVariable("idFoyer") long idFoyer,@PathVariable("nomU") String nomU) {
+        Universite universite = iUniversiteService.affecterFoyerAUniversite(idFoyer,nomU);
+        return universite;
+    }
+    @PutMapping("/des-universitieandFoyer/{idU}")
+    @ResponseBody
+    public Universite desaffecterFoyaUniver(@PathVariable("idU") long idU) {
+        Universite universite = iUniversiteService.desaffecterFoyerAUniversite(idU);
+        return universite;
+    }
+
 
 }

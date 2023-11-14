@@ -21,9 +21,9 @@ public class etudiantController {
         return listEtudiants;
     }
     @PostMapping("/add-etudiant")
-    public List<Etudiant> postEtudiants(@RequestBody Etudiant e) {
-        List<Etudiant> listEtudiants = (List<Etudiant>) iEtudiantService.addEtudiant(e);
-        return listEtudiants;
+    public Etudiant postEtudiants(@RequestBody Etudiant e) {
+        Etudiant etudiant =  iEtudiantService.addEtudiant(e);
+        return etudiant;
     }
     @PutMapping("/update-etudiant")
     public Etudiant putEtudiants(@RequestBody Etudiant e) {
@@ -43,5 +43,11 @@ public class etudiantController {
     public List<Etudiant> postEtudiants(@RequestBody List<Etudiant> etudiants) {
         List<Etudiant> listEtudiants = iEtudiantService.addEtudiants(etudiants);
         return listEtudiants;
+    }
+
+    @PutMapping("/affecterEtudiantAReservation/{nomEt}/{prenomEt}/{idReservation}")
+    public void affecterEtudiantAReservation(@PathVariable("nomEt") String nomEt,@PathVariable("prenomEt") String prenomEt,@PathVariable("idReservation") String idReservation) {
+        iEtudiantService.affecterEtudiantAReservation(nomEt,prenomEt,idReservation);
+
     }
 }

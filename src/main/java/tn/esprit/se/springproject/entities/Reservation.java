@@ -1,13 +1,20 @@
 package tn.esprit.se.springproject.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
 
 @Entity
-
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Reservation implements Serializable {
     @Id
    // @GeneratedValue(strategy = GenerationType.IDENTITY)

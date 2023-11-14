@@ -4,7 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import tn.esprit.se.springproject.entities.Etudiant;
+import tn.esprit.se.springproject.entities.Foyer;
 import tn.esprit.se.springproject.entities.Universite;
+import tn.esprit.se.springproject.repositories.FoyerRepository;
 import tn.esprit.se.springproject.repositories.UniversiteRepository;
 
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UniversiteService implements IUniversiteService{
     UniversiteRepository universiteRepository;
+    FoyerRepository foyerRepository;
 
     @Override
     public List<Universite> retrieveAllUniversities() {
@@ -40,4 +43,18 @@ public class UniversiteService implements IUniversiteService{
         universiteRepository.deleteById(id_universite);
 
     }
+    public Universite affecterFoyerAUniversite(long idFoyer, String nomU) {
+        Universite universite = universiteRepository.findByNomUniversite(nomU);
+        Foyer foyer = foyerRepository.findById(idFoyer).get();
+        universite.setFoyer(foyer);
+        universiteRepository.save(universite);
+        return universite;
+    }
+    public Universite desaffecterFoyerAUniversite(long idU) {
+        Universite universite = universiteRepository.findById(idU).get();
+        universite.setFoyer(null);
+        universiteRepository.save(universite);
+        return universite;
+    }
+
 }

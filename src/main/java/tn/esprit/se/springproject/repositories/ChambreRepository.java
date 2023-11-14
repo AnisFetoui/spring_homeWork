@@ -11,4 +11,5 @@ public interface ChambreRepository extends CrudRepository<Chambre,Long> {
   //  List<Chambre> findByTypeCAndBlocNomBloc(TypeChambre Typec, String nomBloc);
    // List<Chambre> findByReservationEstValide(boolean estValide);
    // List<Chambre> findByBlocNomAndcapaciteBlocGreaterThan(String nomBloc, int capaciteBloc);
+    Chambre findByNumeroChambre(Long nc);
 }

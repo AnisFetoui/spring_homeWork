@@ -1,4 +1,10 @@
 package tn.esprit.se.springproject.services;
 
-public interface IFoyerService {
+import tn.esprit.se.springproject.entities.Foyer;
+import tn.esprit.se.springproject.entities.Universite;
+
+public interface  IFoyerService {
+
+    Foyer addFoyer(Foyer f);
+
 }

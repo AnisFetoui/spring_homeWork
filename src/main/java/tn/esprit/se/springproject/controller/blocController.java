@@ -1,14 +1,27 @@
 package tn.esprit.se.springproject.controller;
 
 import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import tn.esprit.se.springproject.entities.Bloc;
+
 import tn.esprit.se.springproject.services.IBlocService;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
-
+@RequestMapping("/bloc")
 public class blocController {
     IBlocService iBlocService;
+    @PostMapping("/add-bloc")
+    public Bloc postfoyer(@RequestBody Bloc b) {
+        Bloc bloc = iBlocService.addBloc( b);
+        return bloc;
+    }
+    @PutMapping("/add-ChambresABloc/{numChambre}/{nomBloc}")
+    @ResponseBody
+    public Bloc affecteChambresABloc(@PathVariable("numChambre") List<Long> numChambre,@PathVariable("nomBloc") String nomBloc){
+        Bloc bloc = iBlocService.affecterChambresABloc(numChambre,nomBloc);
+        return bloc;
+    }
 }

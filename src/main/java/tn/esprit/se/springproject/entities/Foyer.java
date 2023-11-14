@@ -1,11 +1,19 @@
 package tn.esprit.se.springproject.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class Foyer implements Serializable {
 
     @Id
@@ -15,8 +23,9 @@ public class Foyer implements Serializable {
     private Long capaciteFoyer;
 
 
-    @OneToOne(mappedBy="foyer")
+    @OneToOne(cascade = CascadeType.ALL)
     private Universite universite;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="foyer")
     private Set<Bloc> blocs;
 }

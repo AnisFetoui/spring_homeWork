@@ -30,6 +30,6 @@ public class Etudiant implements Serializable {
     private Date dateNaissance;
 // Constructeur et accesseurs (getters) et mutateurs (setters)
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
    private Set<Reservation> reservation;
 }
