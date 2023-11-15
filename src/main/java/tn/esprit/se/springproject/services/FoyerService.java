@@ -20,4 +20,10 @@ public class FoyerService implements IFoyerService{
         return foyerRepository.save(f);
     }
 
+    @Override
+    public Foyer addFoyerWithBloc(Foyer foyer) {
+
+        return foyerRepository.save(foyer);
+    }
+
 }

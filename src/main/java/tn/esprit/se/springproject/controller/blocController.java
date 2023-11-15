@@ -18,9 +18,9 @@ public class blocController {
         Bloc bloc = iBlocService.addBloc( b);
         return bloc;
     }
-    @PutMapping("/add-ChambresABloc/{numChambre}/{nomBloc}")
+    @PutMapping("/add-ChambresABloc/{nomBloc}")
     @ResponseBody
-    public Bloc affecteChambresABloc(@PathVariable("numChambre") List<Long> numChambre,@PathVariable("nomBloc") String nomBloc){
+    public Bloc affecteChambresABloc(@RequestBody List<Long> numChambre,@PathVariable("nomBloc") String nomBloc){
         Bloc bloc = iBlocService.affecterChambresABloc(numChambre,nomBloc);
         return bloc;
     }

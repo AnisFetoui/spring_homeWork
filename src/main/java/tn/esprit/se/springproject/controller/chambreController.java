@@ -4,14 +4,14 @@ package tn.esprit.se.springproject.controller;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import tn.esprit.se.springproject.entities.Bloc;
 import tn.esprit.se.springproject.entities.Chambre;
+import tn.esprit.se.springproject.entities.TypeChambre;
 import tn.esprit.se.springproject.repositories.ChambreRepository;
 import tn.esprit.se.springproject.services.IChambreService;
+
+import java.util.Set;
 
 @RestController
 @AllArgsConstructor
@@ -23,4 +23,18 @@ public class chambreController {
         Chambre chambre = iChambreService.addChambre( c);
         return chambre;
     }
+
+    @GetMapping("/nbChambreParTypeEtBloc/{type}/{idBloc}")
+    public long nbChambreParTypeEtBloc(@PathVariable TypeChambre type,@PathVariable long idBloc ){
+        long anis = iChambreService.nbChambreParTypeEtBloc(type,idBloc);
+        return anis;
+    }
+
+    @GetMapping("/getChambresParNomBloc/{nomBloc}")
+    public Set<Chambre> getChambresParNomBloc(@PathVariable String nomBloc){
+        Set<Chambre> chambres = iChambreService.getChambresParNomBloc(nomBloc);
+        return chambres;
+    }
+
+
 }

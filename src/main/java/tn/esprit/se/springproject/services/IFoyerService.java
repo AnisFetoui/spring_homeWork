@@ -6,5 +6,6 @@ import tn.esprit.se.springproject.entities.Universite;
 public interface  IFoyerService {
 
     Foyer addFoyer(Foyer f);
+    Foyer addFoyerWithBloc (Foyer foyer);
 
 }

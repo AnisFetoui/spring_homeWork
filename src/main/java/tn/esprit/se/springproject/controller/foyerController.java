@@ -20,5 +20,10 @@ public class foyerController {
     Foyer foyer = iFoyerService.addFoyer( f);
     return foyer;
   }
+  @PostMapping("/add-foyerWithBloc")
+  public Foyer postfoyerWithBloc(@RequestBody Foyer f) {
+    Foyer foyer = iFoyerService.addFoyerWithBloc( f);
+    return foyer;
+  }
 
 }
