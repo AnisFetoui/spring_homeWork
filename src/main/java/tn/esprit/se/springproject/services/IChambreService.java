@@ -11,5 +11,6 @@ public interface IChambreService {
     Chambre addChambre(Chambre c);
     public Set<Chambre> getChambresParNomBloc(String nomBloc );
     public long nbChambreParTypeEtBloc(TypeChambre type, long idBloc );
+    public Chambre affecterBlocAChambre(long numChambre,String nomBloc);
 
 }

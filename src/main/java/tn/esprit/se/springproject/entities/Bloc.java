@@ -24,7 +24,7 @@ public class Bloc implements Serializable {
     private Long capaciteBloc;
     @ManyToOne
     Foyer foyer;
-    @OneToMany( mappedBy="bloc",cascade = CascadeType.ALL)
+    @OneToMany( mappedBy="bloc",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonIgnore
     private Set<Chambre> chambre;
 }

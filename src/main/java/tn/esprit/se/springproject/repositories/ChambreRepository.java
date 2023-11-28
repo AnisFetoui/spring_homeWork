@@ -13,6 +13,8 @@ public interface ChambreRepository extends CrudRepository<Chambre,Long> {
    // List<Chambre> findByBlocNomAndcapaciteBlocGreaterThan(String nomBloc, int capaciteBloc);
     Chambre findByNumeroChambre(Long nc);
     List<Chambre> findByTypeCAndBlocIdBloc(TypeChambre Typec, long idBloc);
+    long countByTypeCAndBlocIdBloc(TypeChambre Typec, long idBloc);
+    long countByTypeC(TypeChambre Typec);
 
 
 }
